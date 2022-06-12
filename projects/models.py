@@ -34,7 +34,7 @@ class Profile(models.Model):
 
 class Projects(models.Model):
     title = models.CharField(max_length=100)
-    image = models.ImageField(upload_to ='images/',default='images/proj.png')
+    image = models.ImageField(upload_to ='images/',default='proj.png')
     description = models.TextField()
     post_date = models.DateTimeField(auto_now_add=True)
     profile =models.ForeignKey(Profile, on_delete= models.CASCADE,null=True)
