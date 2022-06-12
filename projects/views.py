@@ -29,3 +29,40 @@ def user_profiles(request):
         form = ProfileUpdateForm()
     
     return render(request, 'registration/profile.html', {"form":form, "projects":projects})
+
+
+@login_required(login_url='/accounts/login/')
+def search_projects(request):
+    if 'keyword' in request.GET and request.GET["keyword"]:
+        search_term = request.GET.get("keyword")
+        searched_projects = Projects.search_projects(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'find.html', {"message":message,"projects": searched_projects})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'find.html', {"message": message})
+
+
+def get_project(request, id):
+    project = Projects.objects.get(pk = id)
+        
+    return render(request, "projects.html", {"project":project})
+
+
+# add project
+@login_required(login_url='/accounts/login/')
+def add_project(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = NewProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            project = form.save(commit=False)
+            project.owner = current_user
+            project.save()
+        return redirect('home')
+
+    else:
+        form = NewProjectForm()
+    return render(request, 'new-project.html', {"form": form})
