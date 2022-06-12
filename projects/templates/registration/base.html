@@ -1,30 +1,79 @@
-{% load bootstrap4 %}
 {% load static %}
+
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% if title %}
-    <title>Sign up- {{title}}</title>
-    {% else %}
-      <title>Signup</title>
-    {% endif %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png"> -->
 
-    {% block styles %}
-    {% bootstrap_css %}
-    {% endblock %}
+  {% if title %}
+  <title>Project Rtings {{title}}</title>
+  {% else %}
+    <title> Projects Rating </title>
+  {% endif %}
+ 
+
+  {% block styles %}
+    
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/css/mdb.min.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
+  <!-- <link rel="stylesheet" href="{% static 'css/rate.css' %}"> -->
+  <!-- <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}"> -->
+  {% endblock %}
+  <!-- <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script> -->
 
 </head>
-<body>
-    {% block content %} {%endblock%}
- 
-    {% block scripts %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    {% bootstrap_javascript %}
-    {% endblock %}
 
+<body class="grey lighten-5">
+    {% include "navbar.html" %}
+
+    {% block content %} 
+    <div class="jumbotron jumbotron-fluid bg-light mb-1 pb-3 pt-3">
+        <div class="">
+          <h2 class="display-5 text-center font-weight-bold text-white">Welcome!!</h2>
+        </div>
+      </div>
+    
+    {%endblock%}
+
+  
+
+
+
+    {% block scripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <!-- JQuery -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <!-- Bootstrap tooltips -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+      <!-- Bootstrap core JavaScript -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+      <!-- MDB core JavaScript -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/js/mdb.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
+      <script type="text/javascript" src="{% static 'script.js' %}"></script>
+
+
+    {% endblock %}
+    <div class="mb-4 pb-4"></div>
+   <!-- Footer -->
+<footer >
+  <!-- Footer Elements -->
+  <div class="footer-copyright text-center py-3">© 2022 Copyright:
+    <a href=""> Precious</a>
+  </div>
+
+</footer>
 </body>
 
 </html>
