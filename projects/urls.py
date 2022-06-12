@@ -9,6 +9,11 @@ urlpatterns =[
 
     re_path(r'^accounts/profile/$', views.user_profiles, name='profile'),
 
+    re_path(r'^search/', views.search_projects, name='search_results'),
+    re_path(r'^project/(\d+)', views.get_project, name='project_results'),
+    re_path(r'^new/project$', views.add_project, name='new-project'),
+
+
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
