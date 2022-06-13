@@ -1,8 +1,8 @@
 from django.db import models
 
 from django.contrib.auth.models import User
-
-
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
 
 # Create your models here.
@@ -13,23 +13,24 @@ class Profile(models.Model):
     bio = models.TextField(max_length=240, null=True)
     contact = models.PositiveIntegerField(default=0)
 
-    def save_profile(self):
-        self.save()
-
-    def delete_profile(self):
-        self.delete()
+    @receiver(post_save, sender=User)
+    def create_profile(sender, instance, created, **kwargs):
+        if created:
+            Profile.objects.create(user=instance)
+        
+    @receiver(post_save, sender=User)
+    def save_profile(sender, instance, **kwargs):
+        instance.profile.save()
 
     def __str__(self):
-        return self.bio
+        return f'{self.user.username} Profile'
 
-    class Meta:
-        verbose_name = 'Profile'
-        verbose_name_plural = 'Profiles'
+    def save_profile(self):
+        self.save()
 
     @classmethod
     def get_profile(cls):
         profile = Profile.objects.all()
-
         return profile
 
 class Projects(models.Model):
@@ -58,7 +59,7 @@ class Projects(models.Model):
         return projects
     
     @classmethod
-    def get_by_author(cls, owner):
+    def get_by_owner(cls, owner):
         projects = cls.objects.filter(owner=owner)
         return projects
     
