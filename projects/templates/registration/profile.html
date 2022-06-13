@@ -8,13 +8,17 @@
     <div class="col-lg-2"></div>
 
     <div class="col-lg-8 mt-5 pt-2 ">
-            <div class="pb-2">
+        <div class="pb-2">
+            {% if user.profile.profile_pic%}
             <img src="{{user.profile.profile_pic.url}}" alt="profile-photo" class="img-fluid-circle" style="border-radius: 50%;height:200px;width: 200px;">
-            
-                <p> <span class="font-weight-bold"> Username:</span>  {{user.username}} </p>
+            {%else%}
+            <p>no profile</p>
+            {% endif %}
+                <p class="mt-3"> <span class="font-weight-bold"> Username:</span>  {{user.username}} </p>
+                <p> <span class="font-weight-bold"> Email:</span>  {{user.email}} </p>
                 <p> <span class="font-weight-bold"> Bio:</span> {{ user.profile.bio}}  </p>
                 <p> <span class="font-weight-bold"> Contact:</span> {{ user.profile.contact}}  </p>
-        <button class="btn btn-md btn-info font-weight-bold" data-toggle="modal" data-target="#profile"> Edit Profile</button>
+                <button class="btn btn-sm btn-info font-weight-bold" data-toggle="modal" data-target="#profile"> Edit Profile</button>
         </div>
         <hr>
         <h4 class="font-weight-bold">My Projects</h4>
@@ -47,9 +51,9 @@
             <div class="modal-body">
                  <div>
                   <!-- profile update form  -->
-                        <h4 class="font-weight-bold">Update Your Profile</h4>
+                        <h6 class="font-weight-bold">Update Your Profile</h6>
                         <hr class="">
-                        <form  method="post" enctype="multipart/form-data">
+                      <form method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                         {% bootstrap_form form%}
 
@@ -61,9 +65,9 @@
                 </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary btn-md" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-sm btn-primary " data-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
-      </div>
+</div>
 {% endblock %}
