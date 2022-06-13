@@ -45,6 +45,12 @@ class Projects(models.Model):
     def save_project(self):
         self.save()
 
+    def __str__(self):
+            return self.title
+
+    class Meta:
+        ordering = ['-post_date']
+
     def delete_project(self):
         self.delete()
 
@@ -69,10 +75,4 @@ class Projects(models.Model):
         project = Projects.objects.get(pk = id)
         return project
     
-    def __str__(self):
-        return self.title
-    
-    class Meta:
-        ordering = ['-post_date']
-        verbose_name = 'My Project'
-        verbose_name_plural = 'Projects'
+   

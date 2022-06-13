@@ -1,15 +1,17 @@
 from django.shortcuts import render,redirect
-
 from .models import *
 from .forms import *
 from django.contrib.auth.decorators import login_required
+
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializer import *
 # Create your views here.
 
 def home(request):
     projects = Projects.get_projects()
 
     return render(request,'home.html',{"projects":projects})
-
 
 
 @login_required(login_url='/accounts/login/')
@@ -66,3 +68,22 @@ def add_project(request):
     else:
         form = NewProjectForm()
     return render(request, 'new-project.html', {"form": form})
+
+# Apis
+
+class ProfileList(APIView):
+    def get(self, request, format=None):
+        profs = Profile.objects.all()
+        serializers = ProfileSerializer(profs, many=True)
+        return Response(serializers.data)
+
+class ProjectList(APIView):
+    def get(self, request, format=None):
+        projs = Projects.objects.all()
+        serializers = ProjectSerializer(projs, many=True)
+        return Response(serializers.data)
+    
+    
+
+    
+    
