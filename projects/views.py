@@ -16,7 +16,7 @@ def home(request):
 def user_profiles(request):
     current_user = request.user
     owner = current_user
-    projects = Projects.get_by_author(owner)
+    projects = Projects.get_by_owner(owner)
     
     if request.method == 'POST':
         form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
