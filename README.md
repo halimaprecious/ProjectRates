@@ -74,9 +74,9 @@
 ## APIs 
 This application comes with two API Endpoints for Profiles and Projects.
 
-- Profiles API Endpoint - 
+- Profiles API Endpoint - https://projectrates.herokuapp.com/api/profiles/
 
-- Projects API Endpoint -
+- Projects API Endpoint -https://projectrates.herokuapp.com/api/projects/
   
 
 ## Contact Information   
