@@ -12,6 +12,7 @@ urlpatterns =[
     re_path(r'^search/', views.search_projects, name='search_results'),
     re_path(r'^project/(\d+)', views.get_project, name='project_results'),
     re_path(r'^new/project$', views.add_project, name='new-project'),
+    re_path(r'ratings/', include('star_ratings.urls', namespace='ratings')),
 
     re_path(r'^api/projects/$', views.ProjectList.as_view()),
     re_path(r'^api/profiles/$', views.ProfileList.as_view()),

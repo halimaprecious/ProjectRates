@@ -1,5 +1,5 @@
 {%extends 'base.html'%}
-
+{% load ratings %}
 {% load bootstrap4%}
 
 {% block content %}
@@ -36,9 +36,13 @@
           <h5 class="pt-2">REVIEWS</h5>
           <hr>
             <div class="mt-2 pt-2">
+
               <P class="font-weight-bold">Design:</P>
+              {% ratings project %}
               <P class="font-weight-bold">Usability:</P>
+              {% ratings project %}
               <P class="font-weight-bold">Content:</P>
+              {% ratings project %}
             </div>
         </div>
       </div>

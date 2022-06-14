@@ -68,6 +68,7 @@ INSTALLED_APPS = [
     'projects',
     'bootstrap4',
     'rest_framework',
+    'star_ratings',
     
     'django.contrib.admin',
     'django.contrib.auth',
@@ -103,6 +104,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+                
             ],
         },
     },
@@ -177,3 +179,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
+
+STAR_RATINGS_RANGE = 10 
