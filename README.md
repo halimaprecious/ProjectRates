@@ -39,7 +39,7 @@
 
 # **SETUP/INSTALLATION.**
 
- To view the app.Visit -> [projectrates]()
+ To view the app.Visit -> [projectrates](https://projectrates.herokuapp.com/)
 
 1. Clone this repo: git clone [here](https://github.com/halimaprecious/ProjectRates.git)
 2. The repo comes in a zipped or compressed format. Extract to your prefered location and open it.
@@ -84,7 +84,7 @@ If you have any question or contributions, please email me at halimaprecious3@gm
 
 
 ## live link 
-
+https://projectrates.herokuapp.com/
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
