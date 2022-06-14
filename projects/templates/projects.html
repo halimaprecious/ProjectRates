@@ -1,88 +1,49 @@
 {%extends 'base.html'%}
 
 {% load bootstrap4%}
-{% load ratings %}
 
 {% block content %}
 <div class="container">
   <div class="row mt-4"></div>
-
   <div class="row">
-
     <div class="col-lg-12">
-  <!-- Card -->
       <div class="card card-cascade wider reverse">
-        <!-- Card image -->
         <div class="view view-cascade overlay">
-          {% if project.project_image %}
+          {% if project.image %}
           <img class="card-img-top" src="{{project.image.url}}" alt="{{ project.title }}"
            style="max-height: 500px;">
           {% else %}
-          <img class="card-img-top" src="https://source.unsplash.com/1600x900/?fun,vacation"
-            alt="{{ project.project_name }}">
+            <p>No project</p>
           {% endif %}
-          <a href="#!">
-            <div class="mask rgba-white-slight">
-              <div class="d-flex justify-content-end">
-                <a href="{{project.link}}" target="_blank" title="Visit site"> <button type="button"
-                    class="btn btn-light px-3"><i class="fas fa-directions" aria-hidden="true"></i></button>
-                </a></div>
+          <div class="card-body card-body-cascade">
+            <h5><a><b>Title: {{ project.title }}</b></a></h5>
+            <p>{{ project.description }}</p>
+            <div>
+              <a href="{{project.link}}" target="_blank" title="Visit site">
+                Visit website</a>
             </div>
-          </a>
-        </div>
-
-        <!-- Card content -->
-        <div class="card-body card-body-cascade text-center">
-
-          <!-- Title -->
-          <h2 class="font-weight-bold"><a>{{ project.title }}</a></h2>
-          <!-- Data -->
-          <h4 class="">{{ project.description }}</h4>
-
-          <!-- Social shares -->
-          <div>
-            <a href="{{project.link}}" target="_blank" title="Visit site">
-              <button type="button" class="btn btn-default font-weight-bold px-3">Visit website</button></a>
+            <div class="row mt-5">
+              <div class="col-lg-6 dark-text"> <small>Posted on: {{project.post_date|date:"d /m/Y"}} </small> 
+              </div>
+            </div>
+            <small class="font-weight-bold ">
+              Author: {{project.owner.username|upper}}
+              </small>
           </div>
-          <div class="mt-2 pt-2">
-            <h4>Vote</h4>
-          </div>
-          {%ratings project %}
-
-
-          <div class="row">
-            <!-- <div class="col-lg-6 dark-text"> <small> <span class="mr-1"> From {{project.country.name}}</span>
-                <img src="{{project.country.flag}}" alt=" {{project.country.name}} flag"> </small> </div> -->
-
-            <div class="col-lg-6 dark-text"> <small> Date Posted: {{project.post_date|date:"d /m/Y"}} </small> </div>
-          </div>
-          <!-- {{s_start_user}} -->
-        </div>
-        <!-- Card content -->
-
       </div>
-      <!-- Card -->
-
-      <!-- Card -->
-      <!-- <div class="card mt-5 pb-2 mb-2"> -->
-
-        <!-- Card footer -->
-        <!-- <div class="card-footer bg-white">
-          <h5 class="pt-2">CREDITS</h5>
-
+      <div class="card mt-3 pb-2 mb-2">
+        <div class="card-footer bg-white">
+          <h5 class="pt-2">REVIEWS</h5>
           <hr>
-
-          <small class="font-weight-bold ml-2"><img src="{{ project.Author.profile.photo.url }}" alt=""
-              class="rounded-circle img-fluid mr-1" style="width: 50px;">
-            BY {{project.Author.first_name|upper}} <span class="ml-1 mr-1"> From {{project.country.name}}</span>
-            <img src="{{project.country.flag}}" alt=" {{project.country.name}} flag"></small>
-        </div> -->
-
-      <!-- </div> -->
-
+            <div class="mt-2 pt-2">
+              <P class="font-weight-bold">Design:</P>
+              <P class="font-weight-bold">Usability:</P>
+              <P class="font-weight-bold">Content:</P>
+            </div>
+        </div>
+      </div>
     </div>
-
   </div>
-
+  </div>
 </div>
 {% endblock %}
